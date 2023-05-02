@@ -6,11 +6,6 @@ import "./App.css";
 function App() {
   const [count, setCount] = useState(0);
 
-  //request notification permission
-  Notification.requestPermission().then(function (getperm) {
-    console.log("Perm granted", getperm);
-  });
-
   return (
     <>
       <div>
@@ -25,6 +20,16 @@ function App() {
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
+        </button>
+        <button
+          onClick={() => {
+            //request notification permission
+            Notification.requestPermission().then(function (getperm) {
+              console.log("Perm granted", getperm);
+            });
+          }}
+        >
+          noti permission allow
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
